@@ -109,7 +109,7 @@ define sasl::application (
 
   # Build up an array of packages that need to be installed based on the
   # chosen authentication mechanisms
-  $packages = split(inline_template('<%= scope.lookupvar("::sasl::mech_packages").select { |k| @mech_list.include?(k) }.values.uniq.join(",") %>'), ',') # lint:ignore:80chars
+  $packages = split(inline_template('<%= scope.lookupvar("::sasl::params::mech_packages").select { |k| @mech_list.include?(k) }.uniq.join(",") %>'), ',') # lint:ignore:80chars
   ensure_packages($packages)
   Package[$packages] -> File[$service_file]
 
