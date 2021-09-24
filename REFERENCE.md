@@ -190,6 +190,14 @@ usually `/etc/saslauthd.conf`.
 
 Default value: `$::sasl::params::saslauthd_ldap_conf_file`
 
+##### `ldap_conf_file_mode`
+
+Data type: `String`
+
+file mode for the ldap_conf_file
+
+Default value: `'0644'`
+
 ##### `ldap_auth_method`
 
 Data type: `Optional[Enum['bind', 'custom', 'fastbind']]`

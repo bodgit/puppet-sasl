@@ -5,6 +5,7 @@ class sasl::authd::config {
   $mechanism               = $::sasl::authd::mechanism
   $threads                 = $::sasl::authd::threads
   $ldap_conf_file          = $::sasl::authd::ldap_conf_file
+  $ldap_conf_file_mode     = $::sasl::authd::ldap_conf_file_mode
   $ldap_auth_method        = $::sasl::authd::ldap_auth_method
   $ldap_bind_dn            = $::sasl::authd::ldap_bind_dn
   $ldap_bind_pw            = $::sasl::authd::ldap_bind_pw
@@ -100,7 +101,7 @@ class sasl::authd::config {
     ensure  => $ldap_conf_file_ensure,
     owner   => 0,
     group   => 0,
-    mode    => '0644',
+    mode    => $ldap_conf_file_mode,
     content => template('sasl/saslauthd.conf.erb'),
   }
 }

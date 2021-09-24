@@ -33,6 +33,7 @@
 # @param hasstatus If the service supports querying the running status or not.
 # @param ldap_conf_file Path to the configuration file for LDAP configuration,
 #   usually `/etc/saslauthd.conf`.
+# @param ldap_conf_file_mode file mode for the ldap_conf_file
 # @param ldap_auth_method How to authenticate with the LDAP server.
 # @param ldap_bind_dn Distinguished name used to bind to the LDAP server.
 # @param ldap_bind_pw Password used to bind with.
@@ -82,6 +83,7 @@ class sasl::authd (
   Boolean                                             $hasstatus               = $::sasl::params::saslauthd_hasstatus,
   # ldap
   Optional[Stdlib::Absolutepath]                      $ldap_conf_file          = $::sasl::params::saslauthd_ldap_conf_file,
+  String                                              $ldap_conf_file_mode     = '0644',
   Optional[Enum['bind', 'custom', 'fastbind']]        $ldap_auth_method        = undef,
   Optional[Bodgitlib::LDAP::DN]                       $ldap_bind_dn            = undef,
   Optional[String]                                    $ldap_bind_pw            = undef,
