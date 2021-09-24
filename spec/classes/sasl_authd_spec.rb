@@ -117,6 +117,9 @@ describe 'sasl::authd' do
 
                 EOS
               end
+              it do
+                is_expected.to contain_file('/etc/saslauthd.conf').with_mode('0644')
+              end
 
               case facts[:osfamily]
               when 'Debian'
@@ -173,6 +176,7 @@ describe 'sasl::authd' do
               let(:params) do
                 super().merge(
                   ldap_conf_file: '/tmp/saslauthd.conf',
+                  ldap_conf_file_mode: '0600',
                   # TODO
                 )
               end
@@ -185,6 +189,9 @@ describe 'sasl::authd' do
                   # !!! Managed by Puppet !!!
 
                 EOS
+              end
+              it do
+                is_expected.to contain_file('/tmp/saslauthd.conf').with_mode('0600')
               end
 
               case facts[:osfamily]
