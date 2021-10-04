@@ -1,7 +1,4 @@
 # @!visibility private
 class sasl::install {
-
-  package { $::sasl::package_name:
-    ensure => present,
-  }
+  ensure_packages($sasl::package_name, {'ensure' =>  'present'})
 }
