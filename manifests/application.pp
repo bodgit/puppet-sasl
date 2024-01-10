@@ -94,7 +94,7 @@ define sasl::application (
       ensure_packages([$auxprop_package])
       Package[$auxprop_package] -> File[$service_file]
       if $auxprop_plugin == 'sasldb' {
-        ensure_packages([$sasldb_package])
+        ensure_packages([$::sasl::sasldb_package])
       }
     }
     'saslauthd': {
