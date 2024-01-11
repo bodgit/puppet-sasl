@@ -80,6 +80,9 @@ class sasl::authd (
   String                                              $service_name            = $::sasl::params::saslauthd_service,
   Stdlib::Absolutepath                                $socket                  = $::sasl::params::saslauthd_socket,
   Boolean                                             $hasstatus               = $::sasl::params::saslauthd_hasstatus,
+  Boolean                                             $credcache               = $::sasl::params::saslauthd_credcache,
+  Optional[Integer[0]]                                $credcache_timeout       = undef,
+  Optional[Integer[0]]                                $credcache_size          = undef,
   # ldap
   Optional[Stdlib::Absolutepath]                      $ldap_conf_file          = $::sasl::params::saslauthd_ldap_conf_file,
   Optional[Enum['bind', 'custom', 'fastbind']]        $ldap_auth_method        = undef,

@@ -4,6 +4,9 @@ class sasl::authd::config {
   $socket                  = $::sasl::authd::socket
   $mechanism               = $::sasl::authd::mechanism
   $threads                 = $::sasl::authd::threads
+  $credcache               = $::sasl::authd::credcache
+  $credcache_timeout       = $::sasl::authd::credcache_timeout
+  $credcache_size          = $::sasl::authd::credcache_size
   $ldap_conf_file          = $::sasl::authd::ldap_conf_file
   $ldap_auth_method        = $::sasl::authd::ldap_auth_method
   $ldap_bind_dn            = $::sasl::authd::ldap_bind_dn
@@ -52,6 +55,18 @@ class sasl::authd::config {
       default     => $imap_server,
     },
     default => '',
+  }
+
+  if $credcache {
+    $credcache_opt = '-c'
+  }
+
+  if $credcache_timeout {
+    $credcache_timeout_opt = "-t ${credcache_timeout}"
+  }
+
+  if $credcache_size {
+    $credcache_size_opt = "-s ${credcache_size}"
   }
 
   case $facts['os']['family'] {
