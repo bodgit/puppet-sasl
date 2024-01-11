@@ -62,11 +62,11 @@ class sasl::authd::config {
   }
 
   if $credcache_timeout {
-    $credcache_timeout_opt = '-t ${credcache_timeout}'
+    $credcache_timeout_opt = "-t ${credcache_timeout}"
   }
 
   if $credcache_size {
-    $credcache_size_opt = '-s ${credcache_size}'
+    $credcache_size_opt = "-s ${credcache_size}"
   }
 
   case $facts['os']['family'] {
