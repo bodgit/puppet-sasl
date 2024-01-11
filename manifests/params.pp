@@ -5,6 +5,7 @@ class sasl::params {
   $saslauthd_service        = 'saslauthd'
   $saslauthd_ldap_conf_file = '/etc/saslauthd.conf'
   $saslauthd_threads        = 5
+  $saslauthd_credcache      = true
 
   case $facts['os']['family'] {
     'RedHat': {

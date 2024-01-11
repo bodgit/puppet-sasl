@@ -2,4 +2,4 @@
 
 SOCKETDIR="<%= @socket %>"
 MECH="<%= @mechanism %>"
-FLAGS="<%= @flags %>"
+FLAGS="<%= @flags %> <%= @credcache_opt %> <%= @credcache_timeout_opt %> <%= @credcache_size_opt %>"
